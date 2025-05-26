@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <header class="header">
-            <i class="fa-solid fa-calculator fa-2x"></i>
+            <i class="fa-solid fa-calculator fa-lg"></i>
             <h1>Student MID Average Calculator</h1>
             <p class="subtitle">Instantly calculate your MID and test averages</p>
         </header>
@@ -30,11 +30,11 @@
                         <h2><i class="fa-solid fa-clipboard-list"></i> MID Marks <span class="range">(0–20)</span></h2>
                         <div class="input-group">
                             <label for="mid1">MID 1</label>
-                            <input type="number" id="mid1" name="mid1" min="0" max="20" step="0.5" required placeholder="Enter MID 1">
+                            <input type="number" id="mid1" name="mid1" min="0" max="20" step="0.5" required placeholder="Enter MID 1" value="{{ request.form.mid1 if request.form.mid1 is defined else '' }}">
                         </div>
                         <div class="input-group">
                             <label for="mid2">MID 2</label>
-                            <input type="number" id="mid2" name="mid2" min="0" max="20" step="0.5" required placeholder="Enter MID 2">
+                            <input type="number" id="mid2" name="mid2" min="0" max="20" step="0.5" required placeholder="Enter MID 2" value="{{ request.form.mid2 if request.form.mid2 is defined else '' }}">
                         </div>
                     </section>
 
@@ -44,28 +44,27 @@
                             {% for i in range(1, 6) %}
                                 <div class="input-group">
                                     <label for="test{{ i }}">Test {{ i }}</label>
-                                    <input type="number" id="test{{ i }}" name="test{{ i }}" min="0" max="10" step="0.5" required placeholder="Test {{ i }}">
+                                    <input type="number" id="test{{ i }}" name="test{{ i }}" min="0" max="10" step="0.5" required placeholder="Test {{ i }}" value="{{ request.form['test' ~ i] if request.form['test' ~ i] is defined else '' }}">
                                 </div>
                             {% endfor %}
                         </div>
                     </section>
 
+                    {% if result %}
+                    <section class="form-section results-inline">
+                        <div class="input-group">
+                            <label for="mid_avg">MID Only Average</label>
+                            <input type="text" id="mid_avg" value="{{ result.mid_avg }}" disabled>
+                        </div>
+                        <div class="input-group">
+                            <label for="total_avg">Total Final Average</label>
+                            <input type="text" id="total_avg" value="{{ result.total_avg }}" disabled>
+                        </div>
+                    </section>
+                    {% endif %}
+
                     <button type="submit" class="btn-primary"><i class="fa-solid fa-equals"></i> Calculate</button>
                 </form>
-
-                {% if result %}
-                    <div class="results">
-                        <h2><i class="fa-solid fa-chart-line"></i> Results</h2>
-                        <div class="result-item">
-                            <span class="result-label">MID Only Average:</span>
-                            <span class="result-value">{{ result.mid_avg }}</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">Total Final Average:</span>
-                            <span class="result-value highlight">{{ result.total_avg }}</span>
-                        </div>
-                    </div>
-                {% endif %}
             </div>
         </main>
 
