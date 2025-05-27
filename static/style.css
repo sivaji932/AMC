@@ -15,11 +15,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
 }
 
 .header {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: -30px;
+    margin-top: 30px;
 }
 .header h1 {
     margin: 8px 0 2px 0;
@@ -39,7 +41,7 @@ body {
 
 .card {
     background: #23272f;
-    border-radius: 12px;
+    border-radius: 15px;
     box-shadow: 0 2px 10px rgba(30, 40, 60, 0.18);
     padding: 12px 6px 8px 6px;
     margin-bottom: 10px;
@@ -47,14 +49,15 @@ body {
 }
 
 .form-section {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-left: 23px;
 }
 .form-section h2 {
     font-size: 0.95rem;
     color: #7ed6df;
     margin-bottom: 6px;
     display: flex;
-    align-items: center;
+    align-items: right;
     gap: 6px;
 }
 .form-section .range {
@@ -66,7 +69,7 @@ body {
 .input-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 7px;
+    margin-bottom: 6px;
 }
 .input-group label {
     font-weight: 500;
@@ -76,14 +79,14 @@ body {
 }
 .input-group input[type="number"],
 .input-group input[type="text"] {
-    padding: 6px 8px;
-    border: 1px solid #353b48;
-    border-radius: 6px;
+    padding: 6px 10px;
+    border: 3px solid #353b48;
+    border-radius: 15px;
     font-size: 0.95rem;
     background: #181a20;
     color: #f5f6fa;
     transition: border 0.2s, background 0.2s;
-    width: 100%;
+    width: 95%;
     box-sizing: border-box;
 }
 .input-group input[type="number"]:focus {
@@ -103,7 +106,7 @@ body {
 .test-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px 8px;
+    gap: 6px 6px;
 }
 
 .btn-primary {
